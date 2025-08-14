@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureVault - Password Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Authentication Section -->
+    <div id="auth-container" class="container">
+        <div class="auth-card">
+            <h1><i class="fas fa-shield-alt"></i> SecureVault</h1>
+            
+            <!-- Login Form -->
+            <div id="login-form" class="form-section active">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register-form" class="form-section">
+                <h2>Register</h2>
+                <form id="registerForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="email" id="registerEmail" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="registerPassword" placeholder="Password" required minlength="8">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <div id="password-match-indicator" class="password-indicator"></div>
+                    <button type="submit" class="btn-primary">Register</button>
+                </form>
+                <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="app-container" class="container hidden">
+        <header>
+            <h1><i class="fas fa-shield-alt"></i> SecureVault</h1>
+            <div class="user-menu">
+                <span id="userEmail"></span>
+                <button id="logoutBtn" class="btn-secondary">Logout</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Add New Entry Section -->
+            <div class="add-entry-section">
+                <h2>Add New Password Entry</h2>
+                <form id="addEntryForm">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <i class="fas fa-globe"></i>
+                            <input type="text" id="platformName" placeholder="Platform (e.g., gmail, facebook)" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="platformUsername" placeholder="Username" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-key"></i>
+                            <input type="text" id="platformPassword" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-plus"></i> Add Entry
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Password Entries List -->
+            <div class="entries-section">
+                <h2>Your Password Entries</h2>
+                <div id="entriesList" class="entries-list">
+                    <!-- Entries will be dynamically populated here -->
+                </div>
+                <div id="emptyState" class="empty-state">
+                    <i class="fas fa-key"></i>
+                    <p>No password entries yet. Add your first one above!</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Entry Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Entry</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="editEntryForm">
+                <div class="input-group">
+                    <i class="fas fa-globe"></i>
+                    <input type="text" id="editPlatformName" placeholder="Platform" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="editPlatformUsername" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-key"></i>
+                    <input type="text" id="editPlatformPassword" placeholder="Password" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelEdit">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="crypto.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
