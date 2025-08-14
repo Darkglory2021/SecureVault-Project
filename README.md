@@ -22,8 +22,7 @@ SecureVault is a fully client-side, zero-backend password manager implemented as
    - [app.js, index.html & styles.css](#appjs-indexhtml--stylescss)  
    - [Icons](#icons)  
 5. [Design Decisions](#design-decisions)  
-6. [Future Work](#future-work)  
-7. [License](#license)  
+6. [Future Work](#future-work) 
 
 ## Features
 
